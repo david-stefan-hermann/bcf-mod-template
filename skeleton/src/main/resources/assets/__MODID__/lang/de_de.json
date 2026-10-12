@@ -1,0 +1,12 @@
+{
+  "itemGroup.__MODID__": "__MOD_NAME__",
+  "item.__MODID__.guide_book": "__MOD_NAME__-Handbuch",
+  "__MODID__.book.start": "Erste Schritte",
+  "__MODID__.book.start.text": "Was die Mod ist, in zwei, drei Sätzen.",
+  "__MODID__.book.start.motto": "„Ein Satz, den jemand sagt.“",
+  "__MODID__.book.heading.steps": "Erste Schritte",
+  "__MODID__.book.start.step1": "Lies dieses Buch.",
+  "__MODID__.book.heading.crafting": "Herstellung",
+  "__MODID__.book.heading.use": "Benutzung",
+  "__MODID__.book.start.recipe": "Ein neues Handbuch: ein Buch und Papier."
+}

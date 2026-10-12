@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "__MODID__:item/guide_book"
+  }
+}

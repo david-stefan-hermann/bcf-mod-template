@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "__MODID__",
+  "version": "${version}",
+  "name": "__MOD_NAME__",
+  "description": "",
+  "authors": [
+    "BaconCakeFactory"
+  ],
+  "contact": {
+    "sources": "https://github.com/david-stefan-hermann/__MOD_SLUG__"
+  },
+  "license": "MIT",
+  "icon": "assets/__MODID__/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "__MODID__.__CLASS__"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "bcfguidebooklib": ">=1.0.0",
+    "minecraft": "~26.2",
+    "java": ">=25"
+  }
+}
