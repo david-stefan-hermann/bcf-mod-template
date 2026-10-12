@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""The Modrinth and CurseForge description of a mod, made from its README.
+"""The CurseForge description of a mod, made from its README.
 
-    python3 make-listing.py <mod folder> [--branch 26.2] [--modrinth]
+    python3 make-listing.py <mod folder> [--branch 26.2]
 
 Writes <mod folder>/docs/listing.md: the README without what only makes sense on GitHub.
 - Everything between <!-- listing:skip --> and <!-- listing:end --> is left out, and so are the logo (the platforms
@@ -11,16 +11,13 @@ Writes <mod folder>/docs/listing.md: the README without what only makes sense on
   GitHub; links to a heading of the page lose the link and keep their text.
 The repository is contact.sources of fabric.mod.json, the branch the one checked out unless --branch names it.
 
---modrinth also sends the text to the mod's Modrinth page. Token and project id are the mod's publishing properties
-in ~/.gradle/gradle.properties (<initials>.modrinth.token / .projectId, the names its build.gradle uses). CurseForge
-has no interface for the description: paste docs/listing.md into its editor.
+CurseForge has no interface for the description: it goes into the editor of the project page.
 """
 import argparse
 import json
 import re
 import subprocess
 import sys
-import urllib.request
 from pathlib import Path
 
 
@@ -74,30 +71,10 @@ def relative_targets(text: str) -> list:
             if not re.match(r'[a-z]+:', t)]
 
 
-def send_to_modrinth(mod: Path, text: str) -> None:
-    prefix = re.search(r"'(\w+)\.modrinth\.projectId'", (mod / 'build.gradle').read_text(encoding='utf-8'))
-    if not prefix:
-        sys.exit('build.gradle names no <initials>.modrinth.projectId')
-    properties = {}
-    for line in (Path.home() / '.gradle/gradle.properties').read_text(encoding='utf-8').splitlines():
-        if '=' in line and not line.lstrip().startswith('#'):
-            key, value = line.split('=', 1)
-            properties[key.strip()] = value.strip()
-    token = properties[prefix.group(1) + '.modrinth.token']
-    project = properties[prefix.group(1) + '.modrinth.projectId']
-    request = urllib.request.Request('https://api.modrinth.com/v2/project/' + project, method='PATCH',
-                                     data=json.dumps({'body': text}).encode('utf-8'),
-                                     headers={'Authorization': token, 'Content-Type': 'application/json',
-                                              'User-Agent': 'BaconCakeFactory/bcf-mod-template'})
-    with urllib.request.urlopen(request) as response:
-        print('Modrinth: HTTP', response.status)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     parser.add_argument('mod', type=Path)
     parser.add_argument('--branch')
-    parser.add_argument('--modrinth', action='store_true')
     args = parser.parse_args()
     repo = repository(args.mod)
     text = listing((args.mod / 'README.md').read_text(encoding='utf-8'), repo, args.branch or branch(args.mod))
@@ -108,8 +85,6 @@ def main() -> None:
     out.parent.mkdir(exist_ok=True)
     out.write_text(text, encoding='utf-8', newline='\n')
     print('%s: %d lines, %d pictures' % (out, text.count('\n'), text.count('![')))
-    if args.modrinth:
-        send_to_modrinth(args.mod, text)
 
 
 if __name__ == '__main__':

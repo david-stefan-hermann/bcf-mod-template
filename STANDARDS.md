@@ -10,14 +10,14 @@ Everything follows from the display name.
 | What | Rule | Example |
 |---|---|---|
 | Display name | title case, with spaces | `World Radio` |
-| Project folder, GitHub repository, Modrinth slug | kebab-case | `world-radio` |
+| Project folder, GitHub repository, CurseForge slug | kebab-case | `world-radio` |
 | Mod id, `archives_base_name`, `rootProject.name`, Java package | lower case, no separators | `worldradio` |
 | `maven_group` | `de.baconcakefactory.<modid>` | `de.baconcakefactory.worldradio` |
 | Jar | `<modid>-<version>.jar` | `worldradio-2.2.0+26.2.jar` |
 | Author (`fabric.mod.json`, `LICENSE`, git) | `BaconCakeFactory` | |
 | License | MIT, file `LICENSE`, bundled as `LICENSE_<modid>` | |
 | `contact.sources` | the GitHub repository | `https://github.com/david-stefan-hermann/world-radio` |
-| Publishing properties | `<initials>.modrinth.token`, `.modrinth.projectId`, `.curseforge.token`, `.curseforge.projectId`, in `~/.gradle/gradle.properties` only | `wr.modrinth.token` |
+| Publishing properties | `<initials>.curseforge.token`, `<initials>.curseforge.projectId`, in `~/.gradle/gradle.properties` only | `wr.curseforge.token` |
 | Guide book | item `guide_book`, texts `<modid>.book.<chapter>.<name>` | `worldradio.book.range.text` |
 
 ## Branches
@@ -48,10 +48,11 @@ Everything follows from the display name.
 - The chapters in the middle are the guide book's chapters, in the book's order and under the book's titles. The
   README says what the book says and adds what does not fit on a page.
 - Pictures live in `docs/` and are linked relatively. The logo is the mod's `icon.png`, 128 wide, on the right.
-- The Modrinth and CurseForge description is never written by hand: `python3 ../bcf-mod-template/tools/make-listing.py .`
-  writes `docs/listing.md` from the README (committed with it). Whatever is between `<!-- listing:skip -->` and
+- Mods are published on GitHub and CurseForge, not on Modrinth.
+- The CurseForge description is never written by hand: `python3 ../bcf-mod-template/tools/make-listing.py .` writes
+  `docs/listing.md` from the README (committed with it). Whatever is between `<!-- listing:skip -->` and
   `<!-- listing:end -->` stays out of it. CurseForge has no interface for the description: paste the file into its
-  editor (Markdown mode). `--modrinth` sends it to Modrinth.
+  editor (Markdown mode).
 
 ## Guide book
 

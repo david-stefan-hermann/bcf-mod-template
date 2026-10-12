@@ -9,9 +9,8 @@ together, the main things in **bold**.} Everything is in its own creative tab, *
 
 ## Download
 
-Get `{modid}-<version>.jar` from [Modrinth](https://modrinth.com/mod/{mod-name}),
-[CurseForge](https://www.curseforge.com/projects/{id}) or the [GitHub releases](../../releases) and put it into `mods/`
-on the client and the server, next to Fabric API. Requires Minecraft {26.2}, Fabric Loader {0.19.3}+ and Java 25.
+Get `{modid}-<version>.jar` from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/{mod-name}) or the
+[GitHub releases](../../releases) and put it into `mods/` on the client and the server, next to Fabric API. Requires Minecraft {26.2}, Fabric Loader {0.19.3}+ and Java 25.
 
 ## The guide book
 
