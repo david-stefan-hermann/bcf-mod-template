@@ -9,7 +9,8 @@ Writes <mod folder>/docs/listing.md: the README without what only makes sense on
   "Credits" and "License".
 - <img> tags become Markdown pictures; pictures and links into the repository become absolute, so they work outside
   GitHub; links to a heading of the page lose the link and keep their text.
-The repository is contact.sources of fabric.mod.json, the branch the one checked out unless --branch names it.
+The repository is contact.sources of fabric.mod.json (or --repo, for a data pack, which has none), the branch the
+one checked out unless --branch names it.
 
 CurseForge has no interface for the description: it goes into the editor of the project page.
 """
@@ -42,7 +43,7 @@ def without_section(text: str, heading: str, replacement: str) -> str:
 def listing(readme: str, repo: str, branch_name: str) -> str:
     raw = repo.replace('https://github.com/', 'https://raw.githubusercontent.com/') + '/' + branch_name + '/'
     text = re.sub(r'<!-- listing:skip -->.*?<!-- listing:end -->\n?', '', readme, flags=re.S)
-    text = re.sub(r'^<img [^>]*icon\.png[^>]*>\n\n?', '', text, flags=re.M)
+    text = re.sub(r'^<img [^>]*(?:icon|pack)\.png[^>]*>\n\n?', '', text, flags=re.M)
     text = re.sub(r'<img [^>]*?src="([^"]+)"[^>]*?alt="([^"]*)"[^>]*>', r'![\2](\1)', text)
     text = re.sub(r'^<br clear="[a-z]+">\n\n?', '', text, flags=re.M)
     text = without_section(text, 'Building', '')
@@ -75,8 +76,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     parser.add_argument('mod', type=Path)
     parser.add_argument('--branch')
+    parser.add_argument('--repo', help='repository address, for a project without fabric.mod.json')
     args = parser.parse_args()
-    repo = repository(args.mod)
+    repo = args.repo.rstrip('/') if args.repo else repository(args.mod)
     text = listing((args.mod / 'README.md').read_text(encoding='utf-8'), repo, args.branch or branch(args.mod))
     left = relative_targets(text)
     if left:
