@@ -14,9 +14,9 @@ Get `{modid}-<version>.jar` from [CurseForge](https://www.curseforge.com/minecra
 
 ## The guide book
 
-Every player gets a **{Mod Name} Guide** the first time they join: a book with a chapter for {every ...}, with the
-recipes and pictures, in English and German. Right-click opens it; {the blocks'} tabs are on the left, the topics' on
-the right. Lost it? Craft a new one from a book and {an item}, or take it from the creative tab.
+The **{Mod Name} Guide** is a book with a chapter for {every ...}, with the recipes and pictures, in English and
+German. Craft it from a book and {an item}, or take it from the creative tab. Right-click opens it, E or Escape closes it;
+{the blocks'} tabs are on the left, the topics' on the right.
 
 This page follows the book chapter by chapter and adds the details that do not fit on its pages.
 

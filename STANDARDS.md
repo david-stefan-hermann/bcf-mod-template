@@ -71,8 +71,8 @@ never draws a book screen of its own. What a mod decides:
 - **Writing:** short sentences, present tense, what the player does and what then happens. Numbers come from the
   config or the code as text arguments, never typed into the text. No section taller than a page.
 - **Languages:** `en_us` and `de_de`, always both.
-- **The item:** `guide_book`, stacks to 1, first in the mod's creative tab, given once to every player on their first
-  join (`BOOK.giveOnJoin()`), with a shapeless recipe from a book and something typical of the mod.
+- **The item:** `guide_book`, stacks to 1, first in the mod's creative tab, with a shapeless recipe from a book and
+  something typical of the mod. It is not handed out on joining: with several mods that is a pile of books.
 - **Something a book needs that the library lacks** (a new kind of section, say) is added to the library, for all
   mods.
 

@@ -31,7 +31,6 @@ public final class __CLASS__ implements ModInitializer {
                 .title(Component.translatable("itemGroup." + MOD_ID))
                 .displayItems((params, out) -> out.accept(GUIDE_BOOK))
                 .build());
-        GuideBook.BOOK.giveOnJoin();
     }
 
     private static Item item(String name, Function<Item.Properties, Item> factory) {
