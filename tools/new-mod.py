@@ -4,8 +4,9 @@
     python3 new-mod.py "World Radio" [--initials wr]
 
 Creates ../<mod-name>/ beside this repository (World Radio -> world-radio, mod id worldradio, class WorldRadio) and
-its README from README-TEMPLATE.md. Then: write the description in fabric.mod.json, draw icon.png and
-textures/item/guide_book.png, give the book its colours and its recipe a typical ingredient, fill in the README.
+its README from README-TEMPLATE.md. Then: write the description in fabric.mod.json, draw icon.png, colour
+textures/item/guide_book.png (vanilla's book, see STANDARDS.md and make-book-texture.py), give the book its colours and
+its recipe a typical ingredient, fill in the README.
 """
 import argparse
 import re

@@ -73,6 +73,11 @@ never draws a book screen of its own. What a mod decides:
 - **Languages:** `en_us` and `de_de`, always both.
 - **The item:** `guide_book`, stacks to 1, first in the mod's creative tab, with a shapeless recipe from a book and
   something typical of the mod. It is not handed out on joining: with several mods that is a pile of books.
+- **The item's texture:** vanilla's book, its shape and shading kept, in the mod's colours. Start from
+  `tools/make-book-texture.py <mod folder> <#rrggbb>` (the leather in one colour), then give the cover the mod's
+  mark: a small picture of what the mod adds (Dyed Resin's clump, Greek Trees' leaf), drawn in the cover's slant, or
+  the whole leather in the pattern of the mod's main item (Capture Eggs). Never a flat, front-on book. Look at the
+  other mods' books next to it at 16 and 32 pixels before a release.
 - **Something a book needs that the library lacks** (a new kind of section, say) is added to the library, for all
   mods.
 
